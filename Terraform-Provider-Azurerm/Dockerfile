@@ -14,6 +14,3 @@ ARG PROVIDER_AZURE_VERSION=v1.8.0-latest
 RUN apk add --update bash && \
     mkdir '/terraform'
 COPY --from=provider-azure /go/bin/terraform-provider-azurerm /bin/terraform-provider-azurerm_${PROVIDER_AZURE_VERSION}_x4
-
-WORKDIR /terraform
-ENTRYPOINT ["/bin/terraform"]
