@@ -4,8 +4,7 @@ ARG TERRAFORM_LOCATION="https://releases.hashicorp.com/terraform/0.12.0-alpha1/t
 RUN apk add --update bash openssh zip curl && \
     mkdir '/terraform'
 RUN curl -o /tmp/tf012.zip ${TERRAFORM_LOCATION} && \
-    unzip /tmp/tf012.zip -d /bin/ && \
-    mkdir '/terraform'
+    unzip /tmp/tf012.zip -d /bin/
 
 WORKDIR /terraform
 ENTRYPOINT ["/bin/terraform"]
