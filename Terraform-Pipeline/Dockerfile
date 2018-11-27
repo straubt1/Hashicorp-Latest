@@ -1,10 +1,25 @@
-FROM alpine:latest
+# FROM alpine:latest
+
+# ENV TERRAFORM_VERSION=0.11.10
+
+# RUN apk add --update git curl openssh bash && \
+#     curl https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip > terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
+#     echo "${TERRAFORM_SHA256SUM}  terraform_${TERRAFORM_VERSION}_linux_amd64.zip" > terraform_${TERRAFORM_VERSION}_SHA256SUMS && \
+#     # sha256sum -cs terraform_${TERRAFORM_VERSION}_SHA256SUMS && \
+#     unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /bin && \
+#     rm -f terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+
+# CMD ["/bin/bash"]
+
+FROM ubuntu:16.04
 
 ENV TERRAFORM_VERSION=0.11.10
 
-RUN apk add --update git curl openssh bash && \
+RUN apt-get -y update && apt-get -y install git curl unzip && \
     curl https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip > terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
     echo "${TERRAFORM_SHA256SUM}  terraform_${TERRAFORM_VERSION}_linux_amd64.zip" > terraform_${TERRAFORM_VERSION}_SHA256SUMS && \
     # sha256sum -cs terraform_${TERRAFORM_VERSION}_SHA256SUMS && \
     unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d /bin && \
     rm -f terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+
+CMD [ "/bin/bash" ]
