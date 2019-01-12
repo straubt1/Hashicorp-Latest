@@ -22,4 +22,4 @@ Binaries saved to `/go/bin/terraform-provider-azurerm`.
 ## Terraform-Latest
 
 A combination of both the latest of Terraform-Core and Terraform-Provider-Azurerm ready for use.
- 
+
